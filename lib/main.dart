@@ -1,8 +1,14 @@
-import 'package:escape_game/office_door.dart';
+import 'package:escape_game/screens/office_door_screen.dart';
+import 'package:escape_game/screens/office_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: OfficeDoor(),
+      home: OfficeDoorScreen(),
     );
   }
 }
