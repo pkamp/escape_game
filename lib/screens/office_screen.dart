@@ -56,6 +56,11 @@ class OfficeScreen extends StatelessWidget {
               left: 500,
               width: 40,
               height: 40,
+              image: Image.asset(
+                'assets/qrcode.png',
+                width: 40,
+                height: 40,
+              ),
               onTap: () => showDialog(
                 context: context,
                 builder: (_) => QrCodeDialog(),

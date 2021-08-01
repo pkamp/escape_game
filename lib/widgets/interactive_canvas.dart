@@ -51,13 +51,14 @@ class InteractiveCanvas extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: field.onTap,
-                    child: Container(
-                      width: field.width,
-                      height: field.height,
-                      color: kDebugMode
-                          ? Colors.red.withOpacity(0.8)
-                          : Colors.transparent,
-                    ),
+                    child: field.image ??
+                        Container(
+                          width: field.width,
+                          height: field.height,
+                          color: kDebugMode
+                              ? Colors.red.withOpacity(0.8)
+                              : Colors.transparent,
+                        ),
                   ),
                 ),
               ),
