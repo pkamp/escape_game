@@ -18,7 +18,7 @@ class MailDialog extends StatelessWidget {
         fields: [
           InteractiveField(
             top: 740,
-            left: 30,
+            left: 60,
             width: 150,
             height: 50,
             onTap: () {

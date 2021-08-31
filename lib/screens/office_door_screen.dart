@@ -12,57 +12,53 @@ class OfficeDoorScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppTitle(),
-      body: Center(
-        child: InteractiveCanvas(
-          imageName: 'assets/office_door.jpg',
-          fields: [
-            InteractiveField(
-              top: 420,
-              left: 475,
-              height: 110,
-              width: 50,
-              onTap: () {
-                context.read(doorLockVisited).state = true;
+        appBar: AppTitle(),
+        body: Center(
+          child: InteractiveCanvas(
+            imageName: 'assets/office_door.jpg',
+            fields: [
+              InteractiveField(
+                top: 420,
+                left: 475,
+                height: 110,
+                width: 50,
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => OfficeDoorLockDialog(),
+                  );
+                },
+              )
+            ],
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        floatingActionButton: Container(
+          width: 100,
+          height: 100,
+          child: FittedBox(
+            child: FloatingActionButton(
+              backgroundColor: Colors.green,
+              child: Badge(
+                showBadge: !useProvider(mailVisited).state,
+                badgeColor: Colors.red,
+                badgeContent: Text(
+                  "1",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                child: Icon(Icons.mail),
+              ),
+              onPressed: () {
+                context.read(mailVisited).state = true;
                 showDialog(
                   context: context,
-                  builder: (_) => OfficeDoorLockDialog(),
+                  builder: (_) => MailDialog(),
                 );
               },
-            )
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: useProvider(doorLockVisited).state
-          ? Container(
-              width: 100,
-              height: 100,
-              child: FittedBox(
-                child: FloatingActionButton(
-                  backgroundColor: Colors.green,
-                  child: Badge(
-                    showBadge: !useProvider(mailVisited).state,
-                    badgeColor: Colors.red,
-                    badgeContent: Text(
-                      "1",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    child: Icon(Icons.mail),
-                  ),
-                  onPressed: () {
-                    context.read(mailVisited).state = true;
-                    showDialog(
-                      context: context,
-                      builder: (_) => MailDialog(),
-                    );
-                  },
-                ),
-              ),
-            )
-          : Container(),
-    );
+            ),
+          ),
+        ));
   }
 }

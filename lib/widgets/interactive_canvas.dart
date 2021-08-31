@@ -1,5 +1,7 @@
+import 'package:escape_game/features/app_state/app_state_providers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 class InteractiveField {
   final double top;
@@ -22,12 +24,16 @@ class InteractiveField {
 }
 
 class InteractiveCanvas extends StatelessWidget {
-  final double width = 1024;
-  final double height = 800;
+  final double width;
+  final double height;
   final String imageName;
   final List<InteractiveField> fields;
 
-  const InteractiveCanvas({required this.imageName, required this.fields});
+  const InteractiveCanvas(
+      {required this.imageName,
+      required this.fields,
+      this.width = 1024,
+      this.height = 800});
 
   build(BuildContext context) {
     return SingleChildScrollView(

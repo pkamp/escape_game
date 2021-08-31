@@ -28,8 +28,9 @@ dependencies:
   hooks_riverpod: ^0.14.0+4
   localstorage: ^4.0.0+1
   painter: ^2.0.0
+  url_launcher: ^6.0.9
   material_design_icons_flutter: ^5.0.5955-rc.1
-
+  http:
 dev_dependencies:
   flutter_test:
     sdk: flutter

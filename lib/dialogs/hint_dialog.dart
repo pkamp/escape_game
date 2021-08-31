@@ -27,10 +27,11 @@ class HintDialog extends StatelessWidget {
       ),
       content: InteractiveCanvas(
         imageName: 'assets/globe.png',
+        width: 1288,
         fields: [
           InteractiveField(
-            top: 447,
-            left: 541,
+            top: 511,
+            left: 557,
             width: 7,
             height: 7,
             onTap: () => showDialog(
@@ -39,7 +40,7 @@ class HintDialog extends StatelessWidget {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(Config.Password),
+                    Text(Config.DoorCode),
                     CloseButton(),
                   ],
                 ),

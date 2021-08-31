@@ -1,12 +1,16 @@
 import 'package:escape_game/dialogs/desktop_dialog.dart';
+import 'package:escape_game/dialogs/info_text_dialog.dart';
 import 'package:escape_game/dialogs/printer_dialog.dart';
 import 'package:escape_game/dialogs/qr_code_dialog.dart';
 import 'package:escape_game/dialogs/tablet_dialog.dart';
+import 'package:escape_game/features/app_state/app_state_providers.dart';
 import 'package:escape_game/widgets/app_title.dart';
 import 'package:escape_game/widgets/interactive_canvas.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class OfficeScreen extends StatelessWidget {
+class OfficeScreen extends HookWidget {
   const OfficeScreen();
 
   @override
@@ -47,7 +51,9 @@ class OfficeScreen extends StatelessWidget {
               height: 55,
               onTap: () => showDialog(
                 context: context,
-                builder: (_) => TabletDialog(),
+                builder: (context) => context.read(tabletSolved).state
+                    ? InfoTextDialog()
+                    : TabletDialog(),
               ),
             ),
             // QR Code

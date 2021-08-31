@@ -1,6 +1,9 @@
 import 'package:escape_game/config.dart';
+import 'package:escape_game/features/app_state/app_state_providers.dart';
 import 'package:escape_game/screens/office_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfficeDoorLockDialog extends StatelessWidget {
   const OfficeDoorLockDialog({Key? key}) : super(key: key);
@@ -18,10 +21,11 @@ class OfficeDoorLockDialog extends StatelessWidget {
       ),
       content: TextField(
         onChanged: (value) {
-          if (value == Config.Password) {
+          if (value == Config.DoorCode) {
+            context.read(doorSolved).state = true;
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(
+                CupertinoPageRoute(
                   builder: (_) => OfficeScreen(),
                 ),
                 (route) => false);
