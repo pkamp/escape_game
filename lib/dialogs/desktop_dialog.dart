@@ -76,11 +76,12 @@ class DesktopDialog extends HookWidget {
                               0, html.window.location.href.length - 2) +
                           "assets/ReporterOhneGrenzen.pdf";
                       js.context.callMethod('open', [url]);
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
                           builder: (context) => EndScreen(),
                         ),
+                        (route) => false,
                       );
                     }
                   },
