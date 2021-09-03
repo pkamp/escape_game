@@ -72,11 +72,6 @@ class DesktopDialog extends HookWidget {
                     if (value == Config.Password) {
                       context.read(countdownProvider.notifier).stop();
 
-                      String url = html.window.location.href.substring(
-                              0, html.window.location.href.length - 2) +
-                          "assets/ReporterOhneGrenzen.pdf";
-                      js.context.callMethod('open', [url]);
-
                       Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
@@ -84,6 +79,10 @@ class DesktopDialog extends HookWidget {
                         ),
                         (route) => false,
                       );
+                      String url = html.window.location.href.substring(
+                              0, html.window.location.href.length - 2) +
+                          "assets/Reporter.pdf";
+                      js.context.callMethod('open', [url]);
                     }
                   },
                   obscureText: true,
