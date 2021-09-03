@@ -14,64 +14,63 @@ class TabletDialog extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      scrollable: true,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(Icons.lock),
-          Text("Gesperrt"),
-          CloseButton(),
-        ],
-      ),
-      content: Column(
-        children: [
-          TextField(
-            obscureText: true,
-            onChanged: (value) {
-              if (value == Config.TabletCode) {
-                context.read(tabletSolved).state = true;
-                Navigator.pop(context);
-                showDialog(
-                  context: context,
-                  builder: (_) => AlertDialog(
-                    scrollable: true,
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Expanded(
-                          child: Text("Auf dem Tablet ist ein Dokument geöffnet"),
-                        ),
-                        CloseButton(),
-                      ],
-                    ),
-                    content: Column(
-                      children: [
-                        TextButton.icon(
-                          onPressed: () async {
-                            String url = html.window.location.href.substring(
-                                    0, html.window.location.href.length - 2) +
-                                "assets/Interview.pdf";
-                            js.context.callMethod('open', [url]);
-                          },
-                          icon: Icon(
-                            Icons.document_scanner,
-                          ),
-                          label: Text("Öffnen"),
-                        ),
-                      ],
-                    ),
+    return Consumer(
+      builder: (context, watch, child) {
+        var solved = watch(tabletSolved).state;
+        if (!solved) {
+          return AlertDialog(
+            scrollable: true,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.lock),
+                Text("Gesperrt"),
+                CloseButton(),
+              ],
+            ),
+            content: Column(
+              children: [
+                TextField(
+                  obscureText: true,
+                ),
+                MaterialButton(
+                  onPressed: () async => await launch(Config.TabletPuzzleUrl),
+                  child: Text("Passwort vergessen?"),
+                ),
+              ],
+            ),
+          );
+        } else {
+          return AlertDialog(
+            scrollable: true,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Text("Auf dem Tablet ist ein Dokument geöffnet"),
+                ),
+                CloseButton(),
+              ],
+            ),
+            content: Column(
+              children: [
+                TextButton.icon(
+                  onPressed: () async {
+                    String url = html.window.location.href.substring(
+                            0, html.window.location.href.length - 2) +
+                        "assets/ITT.pdf";
+                    js.context.callMethod('open', [url]);
+                  },
+                  icon: Icon(
+                    Icons.document_scanner,
                   ),
-                );
-              }
-            },
-          ),
-          MaterialButton(
-            onPressed: () async => await launch(Config.TabletPuzzleUrl),
-            child: Text("Passwort vergessen?"),
-          ),
-        ],
-      ),
+                  label: Text("Öffnen"),
+                ),
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 }

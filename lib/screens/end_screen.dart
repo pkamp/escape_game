@@ -61,6 +61,7 @@ class _EndScreenState extends State<EndScreen> {
                     _controller.play();
                     _downloadAsset("Interview.pdf");
                     _downloadAsset("ReporterOhneGrenzen.pdf");
+                    _downloadAsset("ITT.pdf");
                   },
                   icon: Icon(Icons.download),
                   label: Text("Alle Unterlagen herunterladen"),
