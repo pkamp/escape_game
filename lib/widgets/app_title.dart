@@ -48,7 +48,9 @@ class AppTitle extends StatelessWidget with PreferredSizeWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(hint),
-                            CloseButton(),
+                            CloseButton(
+                              color: Colors.black,
+                            ),
                           ],
                         ),
                       ),

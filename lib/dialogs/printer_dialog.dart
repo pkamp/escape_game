@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+import 'dart:js' as js;
 import 'package:flutter/material.dart';
 
 class PrinterDialog extends StatelessWidget {
@@ -10,22 +12,25 @@ class PrinterDialog extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          Expanded(
+            child: Text("Im Drucker befindet sich ein Dokument"),
+          ),
           CloseButton(),
         ],
       ),
-      content: Row(
+      content: Column(
         children: [
-          Expanded(
-            child: Image.asset(
-              'assets/ecuador.png',
-              fit: BoxFit.fitWidth,
+          TextButton.icon(
+            onPressed: () async {
+              String url = html.window.location.href
+                      .substring(0, html.window.location.href.length - 2) +
+                  "assets/Interview.pdf";
+              js.context.callMethod('open', [url]);
+            },
+            icon: Icon(
+              Icons.print,
             ),
-          ),
-          Expanded(
-            child: Image.asset(
-              'assets/ecuador_puzzle.png',
-              fit: BoxFit.fitWidth,
-            ),
+            label: Text("Öffnen"),
           ),
         ],
       ),

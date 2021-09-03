@@ -9,8 +9,15 @@ abstract class Config {
   static const int OrienteCode = 1632;
   static const String Password = "reporterohnegrenzen";
 
-  static const String DoorHint = "Tür öffnen du Lump!";
-  static const String DesktopHint = "Desktop öffnen du Lump!";
-  static const String TabletHint = "Tableau öffnen du Lump!";
+  static const String DoorHint =
+      "Versuche die Tür mit Hilfe des Hinweises aus der Email zu öffnen.";
+  static const String GlobeHint1 =
+      "Die Sonne kann nur zwischen Wendekreisen im Zenit stehen.";
+  static const String GlobeHint2 = "Es werden die Koordinaten gesucht.";
+  static const String DesktopHint =
+      "Vielleicht schaut ihr euch mal den Computer genauer an.";
+  static const String DesktopHint1 = "Suche die zugehörigen Informationen, vielleicht erkennst du den Desktophintergrund irgendwo wieder.";
+  static const String DesktopHint2 = "Vielleicht solltet ihr mal beim Drucker nachschauen";
+  static const String TabletHint = "Auf dem Tablet könnten sich wichtige Informationen befinden, aber es scheint gesperrt zu sein.";
   static const String QrCodeHint = "QR öffnen du Lump!";
 }

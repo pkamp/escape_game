@@ -1,3 +1,4 @@
+import 'package:escape_game/screens/end_screen.dart';
 import 'package:escape_game/screens/office_door_screen.dart';
 import 'package:escape_game/screens/office_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: OfficeDoorScreen(),
+      home: EndScreen(),
     );
   }
 }

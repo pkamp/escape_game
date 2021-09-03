@@ -2,8 +2,6 @@ import 'package:escape_game/features/app_state/app_state_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:painter/painter.dart';
 
 class QrCodeDialog extends HookWidget {
   const QrCodeDialog({Key? key}) : super(key: key);
@@ -12,8 +10,10 @@ class QrCodeDialog extends HookWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Text(
+              "Markiere die richtigen Zahlen, um den QR-Code zu vervollständigen"),
           CloseButton(),
         ],
       ),

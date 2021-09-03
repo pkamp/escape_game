@@ -5,6 +5,9 @@ var mailVisited = StateProvider<bool>(
   (ref) => false,
 );
 
+var secondDoorHintVisible = StateProvider<bool>((ref) => false);
+var secondDesktopHintVisible = StateProvider<bool>((ref) => false);
+
 var costaCode = StateProvider<String>((ref) => '');
 var sierraCode = StateProvider<String>((ref) => '');
 var orienteCode = StateProvider<String>((ref) => '');
@@ -39,17 +42,17 @@ var doorSolved = StateProvider<bool>(
 
 var currentHint = StateProvider<String?>((ref) {
   var first = ref.watch(doorSolved).state;
-  var second = ref.watch(tabletSolved).state;
-  var third = ref.watch(allCodesSolved).state;
+  var second = ref.watch(allCodesSolved).state;
+  var third = ref.watch(tabletSolved).state;
   var fourth = ref.watch(passwordSolved).state;
   if (!first)
     return Config.DoorHint;
   else if (!second)
-    return Config.TabletHint;
-  else if (!third)
-    return Config.QrCodeHint;
-  else if (!fourth)
     return Config.DesktopHint;
+  else if (!third)
+    return Config.TabletHint;
+  else if (!fourth)
+    return Config.QrCodeHint;
   else
     return null;
 });
