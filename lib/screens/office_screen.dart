@@ -1,5 +1,4 @@
 import 'package:escape_game/dialogs/desktop_dialog.dart';
-import 'package:escape_game/dialogs/info_text_dialog.dart';
 import 'package:escape_game/dialogs/printer_dialog.dart';
 import 'package:escape_game/dialogs/qr_code_dialog.dart';
 import 'package:escape_game/dialogs/tablet_dialog.dart';
@@ -51,9 +50,7 @@ class OfficeScreen extends HookWidget {
               height: 55,
               onTap: () => showDialog(
                 context: context,
-                builder: (context) => context.read(tabletSolved).state
-                    ? InfoTextDialog()
-                    : TabletDialog(),
+                builder: (context) => TabletDialog(),
               ),
             ),
             // QR Code

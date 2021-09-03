@@ -13,12 +13,7 @@ class MailDialog extends StatelessWidget {
       scrollable: true,
       title: Align(
         alignment: Alignment.centerRight,
-        child: CloseButton(
-          onPressed: () {
-            context.read(countdownProvider.notifier).start();
-            Navigator.pop(context);
-          },
-        ),
+        child: CloseButton(),
       ),
       content: InteractiveCanvas(
         imageName: 'assets/mail.png',

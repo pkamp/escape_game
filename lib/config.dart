@@ -16,8 +16,12 @@ abstract class Config {
   static const String GlobeHint2 = "Es werden die Koordinaten gesucht.";
   static const String DesktopHint =
       "Vielleicht schaut ihr euch mal den Computer genauer an.";
-  static const String DesktopHint1 = "Suche die zugehörigen Informationen, vielleicht erkennst du den Desktophintergrund irgendwo wieder.";
-  static const String DesktopHint2 = "Vielleicht solltet ihr mal beim Drucker nachschauen";
-  static const String TabletHint = "Auf dem Tablet könnten sich wichtige Informationen befinden, aber es scheint gesperrt zu sein.";
-  static const String QrCodeHint = "QR öffnen du Lump!";
+  static const String DesktopHint1 =
+      "Suche die zugehörigen Informationen, vielleicht erkennst du den Desktophintergrund irgendwo wieder.";
+  static const String DesktopHint2 =
+      "Vielleicht solltet ihr mal beim Drucker nachschauen.";
+  static const String TabletHint =
+      "Auf dem Tablet könnten sich wichtige Informationen befinden, aber es scheint gesperrt zu sein.";
+  static const String QrCodeHint =
+      "Vielleicht könnt ihr die Informationen aus dem Dokument zur Lösung der Fragen auf dem QR Code nutzen, \num den Computer vollständig zu entsperren.";
 }

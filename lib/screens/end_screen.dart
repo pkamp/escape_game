@@ -41,6 +41,10 @@ class _EndScreenState extends State<EndScreen> {
                   "Herzlichen Glückwunsch - Ihr habt alle Rätsel gelöst!",
                   style: Theme.of(context).textTheme.headline5,
                 ),
+                Image.asset(
+                  "assets/lama.jpg",
+                  height: 200,
+                ),
                 SizedBox(
                   height: 50,
                 ),

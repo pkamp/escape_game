@@ -76,6 +76,7 @@ class DesktopDialog extends HookWidget {
                               0, html.window.location.href.length - 2) +
                           "assets/ReporterOhneGrenzen.pdf";
                       js.context.callMethod('open', [url]);
+
                       Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
@@ -105,11 +106,11 @@ class DesktopDialog extends HookWidget {
                       builder: (context, watch, child) {
                         bool visible = watch(secondDesktopHintVisible).state;
                         List<Widget> children = [
-                          Text(Config.DesktopHint1),
+                          Text("\u2022 ${Config.DesktopHint1}"),
                           SizedBox(height: 20)
                         ];
                         if (visible)
-                          children.add(Text(Config.DesktopHint2));
+                          children.add(Text("\u2022 ${Config.DesktopHint2}"));
                         else
                           children.add(
                             TextButton(

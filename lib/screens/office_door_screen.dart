@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:escape_game/dialogs/mail_dialog.dart';
 import 'package:escape_game/dialogs/office_door_lock_dialog.dart';
 import 'package:escape_game/features/app_state/app_state_providers.dart';
+import 'package:escape_game/features/countdown/countdown_provider.dart';
 import 'package:escape_game/widgets/app_title.dart';
 import 'package:escape_game/widgets/interactive_canvas.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,7 @@ class OfficeDoorScreen extends HookWidget {
               ),
               onPressed: () {
                 context.read(mailVisited).state = true;
+                context.read(countdownProvider.notifier).start();
                 showDialog(
                   context: context,
                   builder: (_) => MailDialog(),

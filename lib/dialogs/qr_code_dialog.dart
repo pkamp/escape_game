@@ -21,21 +21,17 @@ class QrCodeDialog extends HookWidget {
         children: [
           Row(
             children: [
-              Icon(
-                Icons.help,
-                size: 64,
-              ),
               SizedBox(
                 width: 50,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Wie viel bl. vermutet man?"),
-                  Text("Wie viele Stellen sind im ITT-Block?"),
-                  Text("Wie viel USD bekam Raphael?"),
+                  Text("\u2022 Wie viel bl. vermutet man?"),
+                  Text("\u2022 Wie viele Stellen sind im ITT-Block?"),
+                  Text("\u2022 Wie viel USD bekam Rafael?"),
                   Text(
-                      "Wie viel Prozent macht das EÖ anteilig vom Export aus?"),
+                      "\u2022 Wie viel Prozent macht das EÖ anteilig vom Export aus?"),
                 ],
               )
             ],

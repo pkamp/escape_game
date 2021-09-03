@@ -26,12 +26,7 @@ class HintDialog extends HookWidget {
               );
             },
           ),
-          CloseButton(
-            onPressed: () {
-              context.read(countdownProvider.notifier).start();
-              Navigator.pop(context);
-            },
-          ),
+          CloseButton(),
         ],
       ),
       content: Stack(
@@ -74,11 +69,11 @@ class HintDialog extends HookWidget {
                     builder: (context, watch, child) {
                       bool visible = watch(secondDoorHintVisible).state;
                       List<Widget> children = [
-                        Text(Config.GlobeHint1),
+                        Text("\u2022 ${Config.GlobeHint1}"),
                         SizedBox(height: 20)
                       ];
                       if (visible)
-                        children.add(Text(Config.GlobeHint2));
+                        children.add(Text("\u2022 ${Config.GlobeHint2}"));
                       else
                         children.add(
                           TextButton(
