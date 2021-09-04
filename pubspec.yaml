@@ -32,6 +32,7 @@ dependencies:
   material_design_icons_flutter: ^5.0.5955-rc.1
   http:
   confetti: ^0.6.0-nullsafety
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:

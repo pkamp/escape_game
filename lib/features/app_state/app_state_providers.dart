@@ -1,5 +1,9 @@
 import 'package:escape_game/config.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+
+var dateNow = StateProvider<String>(
+    (ref) => DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now()));
 
 var mailVisited = StateProvider<bool>(
   (ref) => false,

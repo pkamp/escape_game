@@ -17,15 +17,17 @@ class CountdownProvider extends StateNotifier<Duration> {
   CountdownProvider(this.duration) : super(duration);
 
   void start() {
-    timer = Timer.periodic(
-      Duration(seconds: 1),
-      (timer) {
-        state = state - Duration(seconds: 1);
-        if (state == Duration.zero) {
-          timer.cancel();
-        }
-      },
-    );
+    if (timer == null) {
+      timer = Timer.periodic(
+        Duration(seconds: 1),
+        (timer) {
+          state = state - Duration(seconds: 1);
+          if (state == Duration.zero) {
+            timer.cancel();
+          }
+        },
+      );
+    }
   }
 
   void stop() {
