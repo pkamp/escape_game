@@ -17,7 +17,7 @@ abstract class Config {
   static const String DesktopHint =
       "Vielleicht schaut ihr euch mal den Computer genauer an.";
   static const String DesktopHint1 =
-      "Suche die zugehörigen Informationen, vielleicht erkennst du den Desktophintergrund irgendwo wieder.";
+      "Sucht die zugehörigen Informationen, vielleicht erkennt ihr den Desktophintergrund irgendwo wieder.";
   static const String DesktopHint2 =
       "Vielleicht solltet ihr mal beim Drucker nachschauen.";
   static const String TabletHint =
