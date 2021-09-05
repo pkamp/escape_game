@@ -72,20 +72,18 @@ class DesktopDialog extends HookWidget {
                     if (value == Config.Password) {
                       context.read(countdownProvider.notifier).stop();
 
-                      String url = html.window.location.href.substring(
-                              0, html.window.location.href.length - 2) +
-                          "assets/Reporter.pdf";
-                      js.context.callMethod('open', [url]);
-
-                      await Future.delayed(Duration(milliseconds: 500));
-
                       Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
                           builder: (context) => EndScreen(),
                         ),
                         (route) => false,
-                      );
+                      ).whenComplete(() {
+                        String url = html.window.location.href.substring(
+                                0, html.window.location.href.length - 2) +
+                            "assets/Reporter.pdf";
+                        js.context.callMethod('open', [url]);
+                      });
                     }
                   },
                   obscureText: true,
