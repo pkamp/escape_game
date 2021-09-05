@@ -43,7 +43,7 @@ class EndScreenMailDialog extends HookWidget {
           ),
           Positioned(
             top: 120,
-            left: 170,
+            left: 150,
             child: Text(
               context.read(endDate).state,
               style: Theme.of(context)
