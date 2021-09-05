@@ -1,4 +1,8 @@
+import 'package:escape_game/config.dart';
 import 'package:escape_game/features/app_state/app_state_providers.dart';
+import 'package:escape_game/features/countdown/countdown_provider.dart';
+import 'package:escape_game/screens/end_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -8,6 +12,10 @@ class QrCodeDialog extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pw = useTextEditingController(
+      text: context.read(password).state,
+    );
+
     return AlertDialog(
       scrollable: true,
       title: Row(
@@ -36,6 +44,30 @@ class QrCodeDialog extends HookWidget {
                 ],
               )
             ],
+          ),
+          TextField(
+            controller: pw,
+            decoration: InputDecoration(
+              prefixIcon: Icon(
+                Icons.qr_code_2,
+              ),
+              labelText: "Lösung des QR Codes",
+            ),
+            onChanged: (value) async {
+              context.read(password).state = value;
+              if (value == Config.Password) {
+                context.read(countdownProvider.notifier).stop();
+
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => EndScreen(),
+                  ),
+                  (route) => false,
+                );
+              }
+            },
+            maxLength: Config.Password.length,
           ),
           SizedBox(
             width: 750,

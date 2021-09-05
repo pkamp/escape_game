@@ -1,32 +1,24 @@
 import 'dart:convert';
 
+import 'package:badges/badges.dart';
 import 'package:confetti/confetti.dart';
+import 'package:escape_game/confetti_hook.dart';
+import 'package:escape_game/dialogs/endscreen_mail_dialog.dart';
+import 'package:escape_game/features/app_state/app_state_providers.dart';
 import 'package:escape_game/widgets/app_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'dart:html' as html;
 
-class EndScreen extends StatefulWidget {
-  const EndScreen();
-
-  @override
-  _EndScreenState createState() => _EndScreenState();
-}
-
-class _EndScreenState extends State<EndScreen> {
-  late ConfettiController _controller;
-
-  @override
-  void initState() {
-    _controller = ConfettiController(
-      duration: const Duration(seconds: 10),
-    );
-    super.initState();
-  }
+class EndScreen extends HookWidget {
+  const EndScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = use(ConfettiControllerHook());
     return Scaffold(
       appBar: AppTitle(),
       body: Column(
@@ -37,19 +29,12 @@ class _EndScreenState extends State<EndScreen> {
           Center(
             child: Column(
               children: [
-                Text(
-                  "Herzlichen Glückwunsch - Ihr habt alle Rätsel gelöst!",
-                  style: Theme.of(context).textTheme.headline5,
-                ),
                 Image.asset(
                   "assets/lama.jpg",
                   height: 200,
                 ),
-                SizedBox(
-                  height: 50,
-                ),
                 ConfettiWidget(
-                  confettiController: _controller,
+                  confettiController: controller,
                   blastDirectionality: BlastDirectionality.explosive,
                   shouldLoop: true,
                   colors: const [
@@ -60,38 +45,47 @@ class _EndScreenState extends State<EndScreen> {
                     Colors.purple
                   ],
                 ),
-                TextButton.icon(
-                  onPressed: () async {
-                    _controller.play();
-                    _downloadAsset("Dokumente.pdf");
-                  },
-                  icon: Icon(Icons.download),
-                  label: Text("Alle Unterlagen herunterladen"),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  "Herzlichen Glückwunsch - Ihr habt alle Rätsel gelöst!",
+                  style: Theme.of(context).textTheme.headline5,
                 ),
               ],
             ),
           ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Container(
+        width: 100,
+        height: 100,
+        child: FittedBox(
+          child: FloatingActionButton(
+            backgroundColor: Colors.green,
+            child: Badge(
+              showBadge: !useProvider(endScreenMailVisited).state,
+              badgeColor: Colors.red,
+              badgeContent: Text(
+                "1",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              child: Icon(Icons.mail),
+            ),
+            onPressed: () {
+              controller.play();
+              context.read(endScreenMailVisited).state = true;
+              showDialog(
+                context: context,
+                builder: (_) => EndScreenMailDialog(),
+              );
+            },
+          ),
+        ),
+      ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _downloadAsset(String assetName) async {
-    http.Response response = await http.get(
-      Uri.parse(html.window.location.href
-              .substring(0, html.window.location.href.length - 2) +
-          "assets/$assetName"),
-    );
-    html.AnchorElement(
-        href:
-            "data:application/octet-stream;charset=utf-16le;base64,${base64Encode(response.bodyBytes)}")
-      ..setAttribute("download", assetName)
-      ..click();
   }
 }

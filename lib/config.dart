@@ -7,7 +7,7 @@ abstract class Config {
   static const int CostaCode = 3521;
   static const int SierraCode = 2413;
   static const int OrienteCode = 1632;
-  static const String Password = "reporterohnegrenzen";
+  static const String Password = "Pressezensur";
 
   static const String DoorHint =
       "Versuche die Tür mit Hilfe des Hinweises aus der Email zu öffnen.";

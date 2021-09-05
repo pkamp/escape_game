@@ -16,11 +16,18 @@ class OfficeDoorLockDialog extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Türschloss"),
+          Text("Bürotür"),
           CloseButton(),
         ],
       ),
       content: TextField(
+        maxLength: Config.DoorCode.length,
+        decoration: InputDecoration(
+          prefixIcon: Icon(
+            Icons.lock,
+          ),
+          labelText: "Passwort",
+        ),
         onChanged: (value) {
           if (value == Config.DoorCode) {
             context.read(doorSolved).state = true;

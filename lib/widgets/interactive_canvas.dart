@@ -67,7 +67,8 @@ class InteractiveCanvas extends HookWidget {
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(width),
-                            color: field.showOnHover && hovering.value
+                            color: field.showOnHover && hovering.value ||
+                                    kDebugMode
                                 ? Colors.red.withOpacity(0.8)
                                 : Colors.transparent,
                           ),

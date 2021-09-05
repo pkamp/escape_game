@@ -3,8 +3,6 @@ import 'dart:js' as js;
 
 import 'package:escape_game/config.dart';
 import 'package:escape_game/features/app_state/app_state_providers.dart';
-import 'package:escape_game/features/countdown/countdown_provider.dart';
-import 'package:escape_game/screens/end_screen.dart';
 import 'package:escape_game/widgets/code_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,10 +23,6 @@ class DesktopDialog extends HookWidget {
     var oriente = useTextEditingController(
       text: context.read(orienteCode).state,
     );
-    var pw = useTextEditingController(
-      text: context.read(password).state,
-    );
-
     return Consumer(
       builder: (context, watch, child) {
         if (watch(allCodesSolved).state) {
@@ -59,36 +53,6 @@ class DesktopDialog extends HookWidget {
                   label: Text("Öffnen"),
                 ),
                 SizedBox(height: 30),
-                TextField(
-                  controller: pw,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.qr_code,
-                    ),
-                    labelText: "QR Code",
-                  ),
-                  onChanged: (value) async {
-                    context.read(password).state = value;
-                    if (value == Config.Password) {
-                      context.read(countdownProvider.notifier).stop();
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => EndScreen(),
-                        ),
-                        (route) => false,
-                      ).whenComplete(() {
-                        String url = html.window.location.href.substring(
-                                0, html.window.location.href.length - 2) +
-                            "assets/Reporter.pdf";
-                        js.context.callMethod('open', [url]);
-                      });
-                    }
-                  },
-                  obscureText: true,
-                  maxLength: 19,
-                ),
               ],
             ),
           );

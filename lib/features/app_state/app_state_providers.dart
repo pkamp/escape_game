@@ -5,7 +5,14 @@ import 'package:intl/intl.dart';
 var dateNow = StateProvider<String>(
     (ref) => DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now()));
 
+var endDate = StateProvider<String>(
+    (ref) => DateFormat('dd.MM.yyyy HH:mm').format(DateTime.now()));
+
 var mailVisited = StateProvider<bool>(
+  (ref) => false,
+);
+
+var endScreenMailVisited = StateProvider<bool>(
   (ref) => false,
 );
 
