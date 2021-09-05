@@ -23,5 +23,5 @@ abstract class Config {
   static const String TabletHint =
       "Auf dem Tablet könnten sich wichtige Informationen befinden, aber es scheint gesperrt zu sein.";
   static const String QrCodeHint =
-      "Vielleicht könnt ihr die Informationen aus dem Dokument zur Lösung der Fragen auf dem QR Code nutzen, \num den Computer vollständig zu entsperren.";
+      "Vielleicht könnt ihr die Informationen aus dem Dokument zur Lösung der Fragen auf dem QR Code nutzen.";
 }
