@@ -10,7 +10,7 @@ abstract class Config {
   static const String Password = "Pressezensur";
 
   static const String DoorHint =
-      "Versuche die Tür mit Hilfe des Hinweises aus der Email zu öffnen.";
+      "Versucht die Tür mit Hilfe des Hinweises aus der Email zu öffnen.";
   static const String GlobeHint1 =
       "Die Sonne kann nur zwischen Wendekreisen im Zenit stehen.";
   static const String GlobeHint2 = "Es werden die Koordinaten gesucht.";
