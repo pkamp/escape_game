@@ -36,10 +36,11 @@ class HintDialog extends HookWidget {
             width: 1288,
             fields: [
               InteractiveField(
-                top: 511,
-                left: 557,
-                width: 7,
-                height: 7,
+                top: 509,
+                left: 555,
+                width: 10,
+                height: 10,
+                showOnHover: true,
                 onTap: () => showDialog(
                   context: context,
                   builder: (_) => AlertDialog(

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: OfficeDoorScreen(),
+      home: OfficeScreen(),
     );
   }
 }

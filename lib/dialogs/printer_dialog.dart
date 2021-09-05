@@ -24,7 +24,7 @@ class PrinterDialog extends StatelessWidget {
             onPressed: () async {
               String url = html.window.location.href
                       .substring(0, html.window.location.href.length - 2) +
-                  "assets/Interview.pdf";
+                  "assets/LandschaftenEcuadors.pdf";
               js.context.callMethod('open', [url]);
             },
             icon: Icon(

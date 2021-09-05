@@ -9,6 +9,7 @@ class QrCodeDialog extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      scrollable: true,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -37,18 +38,18 @@ class QrCodeDialog extends HookWidget {
             ],
           ),
           SizedBox(
-            width: 600,
-            height: 600,
+            width: 750,
+            height: 750,
             child: Stack(
               children: [
                 Image.asset(
                   'assets/qrcode.png',
-                  width: 600,
-                  height: 600,
+                  width: 750,
+                  height: 750,
                 ),
                 Positioned(
-                    left: 155,
-                    top: 155,
+                    left: 193.8,
+                    top: 193.8,
                     child: Consumer(
                       builder: (context, watch, child) {
                         var array = watch(qrcode).state;
@@ -61,8 +62,8 @@ class QrCodeDialog extends HookWidget {
                                 color: array[i][j]
                                     ? Colors.black
                                     : Colors.transparent,
-                                width: 19.33,
-                                height: 19.33,
+                                width: 24.12,
+                                height: 24.12,
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: GestureDetector(

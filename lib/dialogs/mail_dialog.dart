@@ -46,7 +46,8 @@ class MailDialog extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headline6!
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.w500)
+                  .copyWith(fontFamily: "Constantia"),
             ),
           ),
         ],

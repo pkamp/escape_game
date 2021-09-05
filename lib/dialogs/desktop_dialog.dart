@@ -67,10 +67,17 @@ class DesktopDialog extends HookWidget {
                     ),
                     labelText: "QR Code",
                   ),
-                  onChanged: (value) {
+                  onChanged: (value) async {
                     context.read(password).state = value;
                     if (value == Config.Password) {
                       context.read(countdownProvider.notifier).stop();
+
+                      String url = html.window.location.href.substring(
+                              0, html.window.location.href.length - 2) +
+                          "assets/Reporter.pdf";
+                      js.context.callMethod('open', [url]);
+
+                      await Future.delayed(Duration(milliseconds: 500));
 
                       Navigator.pushAndRemoveUntil(
                         context,
@@ -79,10 +86,6 @@ class DesktopDialog extends HookWidget {
                         ),
                         (route) => false,
                       );
-                      String url = html.window.location.href.substring(
-                              0, html.window.location.href.length - 2) +
-                          "assets/Reporter.pdf";
-                      js.context.callMethod('open', [url]);
                     }
                   },
                   obscureText: true,
