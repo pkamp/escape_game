@@ -1,5 +1,5 @@
 abstract class Config {
-  static const int CountdownInSeconds = 2700;
+  static const int CountdownInSeconds = 3600;
   static const String DoorCode = "Ecuador";
   static const String TabletCode = "schwarzesgold";
   static const String TabletPuzzleUrl =
