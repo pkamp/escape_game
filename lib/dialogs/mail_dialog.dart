@@ -1,6 +1,5 @@
 import 'package:escape_game/dialogs/hint_dialog.dart';
 import 'package:escape_game/features/app_state/app_state_providers.dart';
-import 'package:escape_game/features/countdown/countdown_provider.dart';
 import 'package:escape_game/widgets/interactive_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -21,11 +20,12 @@ class MailDialog extends StatelessWidget {
       content: Stack(
         children: [
           InteractiveCanvas(
+            width: 700,
             imageName: 'assets/mail.png',
             fields: [
               InteractiveField(
-                top: 740,
-                left: 60,
+                top: 590,
+                left: 40,
                 width: 150,
                 height: 50,
                 onTap: () {
@@ -39,8 +39,8 @@ class MailDialog extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: 120,
-            left: 170,
+            top: 90,
+            left: 140,
             child: Text(
               context.read(dateNow).state,
               style: Theme.of(context)
