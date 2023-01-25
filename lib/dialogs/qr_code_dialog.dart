@@ -70,18 +70,18 @@ class QrCodeDialog extends HookWidget {
             maxLength: Config.Password.length,
           ),
           SizedBox(
-            width: 750,
-            height: 750,
+            width: 600,
+            height: 600,
             child: Stack(
               children: [
                 Image.asset(
                   'assets/qrcode.png',
-                  width: 750,
-                  height: 750,
+                  width: 600,
+                  height: 600,
                 ),
                 Positioned(
-                    left: 193.8,
-                    top: 193.8,
+                    left: 154.2,
+                    top: 154.2,
                     child: Consumer(
                       builder: (context, watch, child) {
                         var array = watch(qrcode).state;
@@ -94,8 +94,8 @@ class QrCodeDialog extends HookWidget {
                                 color: array[i][j]
                                     ? Colors.black
                                     : Colors.transparent,
-                                width: 24.12,
-                                height: 24.12,
+                                width: 19.4,
+                                height: 19.4,
                                 child: MouseRegion(
                                   cursor: SystemMouseCursors.click,
                                   child: GestureDetector(
