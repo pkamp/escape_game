@@ -31,9 +31,25 @@ var qrcode = StateProvider<List<List<bool>>>(
 );
 
 var allCodesSolved = StateProvider<bool>((ref) {
-  if (ref.watch(costaCode).state == Config.CostaCode.toString() &&
-      ref.watch(sierraCode).state == Config.SierraCode.toString() &&
-      ref.watch(orienteCode).state == Config.OrienteCode.toString()) {
+  print(Config.CostaCode.toSet().difference({}).length);
+  if (Config.CostaCode.toSet()
+              .difference(
+                ref.watch(costaCode).state.split('').toSet(),
+              )
+              .length ==
+          0 &&
+      Config.SierraCode.toSet()
+              .difference(
+                ref.watch(sierraCode).state.split('').toSet(),
+              )
+              .length ==
+          0 &&
+      Config.OrienteCode.toSet()
+              .difference(
+                ref.watch(orienteCode).state.split('').toSet(),
+              )
+              .length ==
+          0) {
     return true;
   }
   return false;

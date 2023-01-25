@@ -4,9 +4,9 @@ abstract class Config {
   static const String TabletCode = "schwarzesgold";
   static const String TabletPuzzleUrl =
       "https://learningapps.org/watch?v=pgfxk0xu321";
-  static const int CostaCode = 3521;
-  static const int SierraCode = 2413;
-  static const int OrienteCode = 1632;
+  static const List<String> CostaCode = ['3', '5', '2', '1'];
+  static const List<String> SierraCode = ['2', '4', '1', '3'];
+  static const List<String> OrienteCode = ['1', '6', '3', '2'];
   static const String Password = "Pressezensur";
 
   static const String DoorHint =
